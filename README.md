@@ -23,4 +23,13 @@
 - You should not be access other routes without login
 - If token is not present, redirect user to login page
 - Logout Feature
-- Profile
+- Get the feed and add the feed in the store
+- build the user card on feed
+- Edit Profile Feature
+- Show Toast Message on save profile
+- New Page - See all my connections
+- New Page - See all my connection requests
+- Feature - Accept/Reject Connection Request
+- Send/ignore the user card from feed
+- Signup New User
+- E2ETesting
