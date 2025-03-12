@@ -69,3 +69,12 @@
     }
   - restart nginxm - sudo systemctl restart nginx
   - Modify the BASEURL in frontend project to "/api"
+
+# Adding a custom Domain name
+
+- purchased domain name from godaddy
+- signup on cloudflare & add a new domain name
+- change the nameservers on godaddy and point it to cloudfare
+- wait for sometime till your nameservers are updated
+- DNS record: A devtinder.in 16.16.215.195
+- Enable SSL for website
