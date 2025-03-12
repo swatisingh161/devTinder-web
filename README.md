@@ -33,3 +33,39 @@
 - Send/ignore the user card from feed
 - Signup New User
 - E2ETesting
+
+# Deployment
+
+- Signup on AWS
+- Launch instance
+- chmod 400 <secret>.pem
+- ssh -i "devTinder1.pem" ubuntu@ec2-13-51-47-44.eu-north-1.compute.amazonaws.com
+- Install Node version 18.20.7
+- Git clone
+- Frontend
+  - npm install -> depenedencies install
+  - npm run build
+  - sudo apt update
+  - sudo apt install nginx
+  - sudo systemctl start nginx
+  - sudo systemctl enable nginx
+  - Copy code from dist(build files) to /var/www/html/
+  - sudo scp -r dist/\* /var/www/html/
+  - Enable port :80 of your instance
+- Backend
+  - allowed ec2 instance public IP on mongodb server
+  - npm install pm2 -g
+  - pm2 start npm --name "devTinder-backend" -- start
+  - pm2 logs
+  - pm2 list, pm2 flush <name>, pm2 stop <name>, pm2 delete <name>
+  - config nginx - /etc/nginx/sites-available/default
+    location /api/ {  
+    proxy_pass http://localhost:7777/;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection 'upgrade';
+    proxy_set_header Host $host;
+    proxy_cache_bypass $http_upgrade;
+    }
+  - restart nginxm - sudo systemctl restart nginx
+  - Modify the BASEURL in frontend project to "/api"
